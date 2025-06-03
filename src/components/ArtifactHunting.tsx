@@ -17,8 +17,8 @@ import {
   Avatar,
   Divider,
   Alert,
+  Stack,
 } from '@mui/material';
-import Grid from '@mui/material/Unstable_Grid2';
 import {
   ExpandMore as ExpandMoreIcon,
   LocationOn as LocationIcon,
@@ -206,11 +206,10 @@ const ArtifactHunting: React.FC = () => {
         </Alert>
       </Box>
 
-      <Grid container spacing={3}>
+      <Stack spacing={3}>
         {huntingLocations.map((location) => (
-          <Grid xs={12} key={location.id}>
-            <Card elevation={2} sx={{ '&:hover': { elevation: 4 } }}>
-              <CardContent>
+          <Card key={location.id} elevation={2} sx={{ '&:hover': { elevation: 4 } }}>
+            <CardContent>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
                   <Box>
                     <Typography variant="h5" component="h3" gutterBottom>
@@ -274,8 +273,8 @@ const ArtifactHunting: React.FC = () => {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <Grid container spacing={3}>
-                      <Grid xs={12} md={6}>
+                    <Stack direction={{ xs: 'column', md: 'row' }} spacing={3}>
+                      <Box sx={{ flex: 1 }}>
                         <Typography variant="h6" gutterBottom sx={{ display: 'flex', alignItems: 'center' }}>
                           <TipsIcon sx={{ mr: 1 }} />
                           Hunting Tips
@@ -299,9 +298,9 @@ const ArtifactHunting: React.FC = () => {
                             <Chip key={index} label={season} color="primary" variant="outlined" size="small" />
                           ))}
                         </Box>
-                      </Grid>
+                      </Box>
 
-                      <Grid xs={12} md={6}>
+                      <Box sx={{ flex: 1 }}>
                         <Typography variant="h6" gutterBottom>
                           Location Details
                         </Typography>
@@ -343,15 +342,14 @@ const ArtifactHunting: React.FC = () => {
                             <Chip key={index} label={find} color="secondary" variant="outlined" size="small" />
                           ))}
                         </Box>
-                      </Grid>
-                    </Grid>
+                      </Box>
+                    </Stack>
                   </AccordionDetails>
                 </Accordion>
               </CardContent>
             </Card>
-          </Grid>
         ))}
-      </Grid>
+      </Stack>
 
       <Divider sx={{ my: 4 }} />
       
